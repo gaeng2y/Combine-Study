@@ -17,6 +17,6 @@
 * 한 Chapter 씩 정리할 예정
 * **Section I: Introduction to Combine**
 
-|Chatper|    Subject    |Note|
-|-------|---------------|----|
-|  #1   |[Hello, Combine!]()|소개|
+>|Chatper|    Subject    |Note|
+>|-------|---------------|----|
+>|  #1   |[Hello, Combine!]()|소개|
