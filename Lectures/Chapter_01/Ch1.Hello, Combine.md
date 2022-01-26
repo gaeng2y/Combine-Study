@@ -69,3 +69,20 @@ Apple은 수년 동안 그들의 플랫폼을 위한 비동기 프로그래밍�
 그럼에도 불구하고, 좋은 비동기 프로그램을 작성하는 것은 가능하다. 하지만 불행하게도, 비동기 코드와 자원 공유는 재현, 추적 및 궁극적으로 해결하기 어려운 문제를 일으킬 수 있다.
 
 확실히, 이러한 문제의 원인 중 하나는 견고하고 실제 앱이 각각 고유한 인터페이스를 갖춘 모든 종류의 비동기 API를 사용할 가능성이 높다는 사실입니다.
+
+![1-1](https://github.com/gaeng2y/Combine-Study/blob/main/Lectures/Chapter_01/1-1.png?raw=true)
+
+Combine은 비동기 프로그래밍 세계의 혼란에 더 많은 질서를 가져오는 데 도움이 되는 Swift 생태계에 새로운 언어를 도입하는 것을 목표로 한다.
+
+Apple은 Combine의 API를 Foundation 프레임워크에 깊이 통합했기 때문에 타이머, NotificationCenter 및 **Core Data**와 같은 핵심 프레임워크는 이미 언어를 구사합니다. 운 좋게도, Combine은 또한 당신의 코드에 통합하기가 매우 쉽습니다.
+
+마지막으로, Apple은 Combine과 쉽게 통합할 수 있도록 놀라운 새로운 UI 프레임워크인 SwiftUI를 설계했다.
+
+Apple이 Combine으로 리액티브 프로그래밍에 얼마나 전념하고 있는지에 대한 아이디어를 제공하기 위해, 다음은 Combine이 시스템 계층 구조에서 어디에 있는지 보여주는 간단한 다이어그램입니다:
+
+![1-2](https://github.com/gaeng2y/Combine-Study/blob/main/Lectures/Chapter_01/1-2.png?raw=true)
+
+대안에서 SwiftUI에 이르기까지 다양한 시스템 프레임워크는 결합에 의존하며 "전통적인" API의 대안으로 결합 통합을 제공합니다.
+
+Combine은 Apple 프레임워크이기 때문에, 타이머나 NotificationCenter와 같이 잘 테스트되고 견고한 API의 역할을 없애는 것을 목표로 하지 않는다. 그 재단 유형들은 여전히 존재하며 그들의 역할을 하고 있다. 대신, Combine은 그들과 통합되어 서로 비동기적으로 대화하려는 앱의 모든 유형이 새롭고 보편적인 언어를 통해 그렇게 할 수 있도록 합니다.
+
