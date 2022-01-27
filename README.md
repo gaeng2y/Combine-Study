@@ -19,4 +19,4 @@
 
 >|Chatper|    Subject    |Note|
 >|-------|---------------|----|
->|  #1   |[Hello, Combine!]()|소개|
+>|  #1   |[Hello, Combine!](https://github.com/gaeng2y/Combine-Study/blob/main/Lectures/Chapter_01/Ch1.Hello%2C%20Combine.md)|소개|
