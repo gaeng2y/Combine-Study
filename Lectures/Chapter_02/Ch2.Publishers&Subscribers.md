@@ -113,7 +113,7 @@ example(of: "Just") {
 
 그렇다면 결과가 이렇게 나올 것이다!
 
-```
+```
 -------- Example of: Just ------
 Received value Hello world!
 Received completion finished
@@ -173,7 +173,7 @@ didSet {
 
 출력되는 값을 봐보자:
 
-```swift
+```
 -------- Example of: assign(to:on:) ------
 Hello
 world!
