@@ -20,3 +20,5 @@
 >|Chatper|    Subject    |Note|
 >|-------|---------------|----|
 >|  #1   |[Hello, Combine!](https://github.com/gaeng2y/Combine-Study/blob/main/Lectures/Chapter_01/Ch1.Hello%2C%20Combine.md)|소개|
+>|  #2   |[Publishers &
+Subscribers](https://github.com/gaeng2y/Combine-Study/blob/main/Lectures/Chapter_02/Ch2.Publishers%26Subscribers.md)|기본적인 Publisher, subscriber 소개|
