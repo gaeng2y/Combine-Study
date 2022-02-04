@@ -223,9 +223,13 @@ Notification received from a publisher!
 이 UML 다이어그램을 살펴보세요:
 
 1. subscriber는 publisher를 구독한다.
+
 2. publisher는 구독을 만들어 subscriber에게 제공합니다.
+
 3. subscriber는 값을 요청합니다.
+
 4. publisher는 값을 보냅니다.
+
 5. publisher는 completion를 보낸다.
 
 `Publisher` 프로토콜과 가장 중요한 extension을 살펴보자:
@@ -263,17 +267,79 @@ extension Publisher {
 
 associated types은 subscriber를 만들기 위해 subscriber가 일치해야 하는 게시자의 인터페이스입니다.
 
+`Subscriber` 프로토콜을 살펴보자
 
+```swift
+public protocol Subscriber: CustomCombineIdentifierConvertible {
+  // 1
+  associatedtype Input
+  // 2
+  associatedtype Failure: Error
+  // 3
+  func receive(subscription: Subscription)
+  // 4
+  func receive(_ input: Self.Input) -> Subscribers.Demand
+// 5
+  func receive(completion: Subscribers.Completion<Self.Failure>)
+}
+```
 
+클로저를 보면
 
+1. subscriber가 받을 수 있는 값의 유형
 
+2. subscriber가 받을 수 있는 에러의 유형; subscriber가 절대 에러를 받지않는 다면 Never
 
+3. publisher는 subscriber에게 receive(subscription:)을 호출하여 구독을 제공합니다.
 
+4. publisher는 subscriber에게 receive(_:)를 호출하여 방금 방출한 새 값을 보낸다
 
+5. publisher는 subscriber에게 receive(completion:)를 호출하여 정상적으로 또는 오류로 인해 값 생성을 마쳤다고 알려줍니다.
 
+publisher와 subscriber 간의 연결은 구독이다. `Subscribe` 프로토콜은 다음과 같습니다:
 
+```swift
+public protocol Subscription: Cancellable,
+CustomCombineIdentifierConvertible {
+  func request(_ demand: Subscribers.Demand)
+}
+```
 
+subscriber는 request(_:)를 호출하여 최대 수 또는 무제한까지 더 많은 값을 받을 의향이 있음을 나타냅니다.
 
+> **Note:** 얼마나 많은 가치를 기꺼이 받을 의향이 있는지 말하는 subscriber의 개념은 **역압 관리(backpressure management)**로 알려져 있다. 그것이나 다른 전략이 없다면, subscriber는 처리할 수 있는 것보다 publisher의 더 많은 가치로 넘쳐날 수 있으며, 이는 문제를 일으킬 수 있다. 배압은 또한 18장, "custom publisher 및 배압 처리"에서 깊이 다룹니다.
+
+subscriber에서, `receive(_:)`가 수요를 반환한다는 것을 주목하세요. 처음에 `receive(_:)`에서 `subscription.request(_:)`를 호출할 때 subscriber가 기꺼이 받을 최대 값 수가 지정되더라도, 새 값이 수신될 때마다 최대값을 조정할 수 있습니다.
+
+## Creating a custom subscriber
+
+방금 배운것을 연습해보기 위해 playground에 새로운 예제를 추가해보자
+
+```swift
+example(of: "Custom Subscriber") {
+  // 1
+  let publisher = (1...6).publisher
+// 2
+  final class IntSubscriber: Subscriber {
+    // 3
+    typealias Input = Int
+    typealias Failure = Never
+// 4
+    func receive(subscription: Subscription) {
+      subscription.request(.max(3))
+    }
+// 5
+    func receive(_ input: Int) -> Subscribers.Demand {
+      print("Received value", input)
+      return .none
+    }
+// 6
+	func receive(completion: Subscribers.Completion<Never>) {
+      print("Received completion", completion)
+    }
+  } 
+}
+```
 
 
 
