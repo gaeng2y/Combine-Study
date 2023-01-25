@@ -9,20 +9,26 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let notification = Notification.Name("MyNotification")
-        let center = NotificationCenter.default
         
-        let observer = center.addObserver(forName: notification, object: nil, queue: nil) { notification in
-            print("Notification recevied!")
+        let publisher = NotificationCenter.default.publisher(for: notification, object: nil)
+        
+        let subscription = publisher
+            .sink { _ in
+            print("Notification recevied")
         }
         
-        center.post(name: notification, object: nil)
-
-        center.removeObserver(observer)
+        NotificationCenter.default.post(name: notification, object: nil)
+        
+      
+       
     }
+
+
 }
 
