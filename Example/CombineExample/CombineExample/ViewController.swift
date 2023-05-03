@@ -5,6 +5,8 @@
 //  Created by gaeng on 2023/05/01.
 //
 
+import Combine
+import CombineCocoa
 import UIKit
 
 class ViewController: UIViewController {
@@ -31,6 +33,9 @@ class ViewController: UIViewController {
         button.setTitle("가입", for: .normal)
         return button
     }()
+    
+    private var cancellables = Set<AnyCancellable>()
+    private let viewModel = ViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,7 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = .systemBackground
         self.setLayout()
+        self.bind(to: self.viewModel)
     }
     
     private func setLayout() {
@@ -86,6 +92,24 @@ class ViewController: UIViewController {
         ].forEach {
             $0.isActive = true
         }
+    }
+    
+    private func bind(to viewModel: ViewModel) {
+        let input = ViewModel.Input(
+            userName: self.idTextField.textPublisher,
+            password: self.passwordTextField.textPublisher,
+            passwordConfirm: self.passwordConfirmTextField.textPublisher
+        )
+        
+        let output = viewModel.transform(input: input)
+        
+        output
+            .buttonIsValid
+            .sink { [weak self] state in
+                self?.signUpButton.isEnabled = state
+                self?.signUpButton.backgroundColor = state ? .systemBlue : .systemGray
+            }
+            .store(in: &self.cancellables)
     }
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0800A812A02A25100CF3299 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0800A802A02A25100CF3299 /* ViewModelType.swift */; };
+		F0800A862A02A49900CF3299 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F0800A852A02A49900CF3299 /* CombineCocoa */; };
 		F0F621D829FF9E55009D463F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F621D729FF9E55009D463F /* AppDelegate.swift */; };
 		F0F621DA29FF9E55009D463F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F621D929FF9E55009D463F /* SceneDelegate.swift */; };
 		F0F621DC29FF9E55009D463F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F621DB29FF9E55009D463F /* ViewController.swift */; };
@@ -16,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0800A802A02A25100CF3299 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		F0F621D429FF9E55009D463F /* CombineExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F621D729FF9E55009D463F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0F621D929FF9E55009D463F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0800A862A02A49900CF3299 /* CombineCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +64,7 @@
 				F0F621D929FF9E55009D463F /* SceneDelegate.swift */,
 				F0F621DB29FF9E55009D463F /* ViewController.swift */,
 				F0F621EB29FF9F06009D463F /* ViewModel.swift */,
+				F0800A802A02A25100CF3299 /* ViewModelType.swift */,
 				F0F621E029FF9E55009D463F /* Assets.xcassets */,
 				F0F621E229FF9E55009D463F /* LaunchScreen.storyboard */,
 				F0F621E529FF9E55009D463F /* Info.plist */,
@@ -83,6 +88,9 @@
 			dependencies = (
 			);
 			name = CombineExample;
+			packageProductDependencies = (
+				F0800A852A02A49900CF3299 /* CombineCocoa */,
+			);
 			productName = CombineExample;
 			productReference = F0F621D429FF9E55009D463F /* CombineExample.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,9 @@
 				Base,
 			);
 			mainGroup = F0F621CB29FF9E55009D463F;
+			packageReferences = (
+				F0800A842A02A49900CF3299 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+			);
 			productRefGroup = F0F621D529FF9E55009D463F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,6 +151,7 @@
 				F0F621DC29FF9E55009D463F /* ViewController.swift in Sources */,
 				F0F621D829FF9E55009D463F /* AppDelegate.swift in Sources */,
 				F0F621EC29FF9F06009D463F /* ViewModel.swift in Sources */,
+				F0800A812A02A25100CF3299 /* ViewModelType.swift in Sources */,
 				F0F621DA29FF9E55009D463F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +360,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F0800A842A02A49900CF3299 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F0800A852A02A49900CF3299 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0800A842A02A49900CF3299 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F0F621CC29FF9E55009D463F /* Project object */;
 }
